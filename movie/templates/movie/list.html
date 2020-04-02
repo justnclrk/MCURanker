@@ -1,0 +1,25 @@
+{% extends "rank/base.html" %}
+{% block title %}- Movie List{% endblock %}
+{% block content %}
+<h3>MCU Titles by Average Rank</h3>
+<div class="row">
+    <div class="col-12">
+        <div class="text-center">
+            {% if user.is_authenticated %}
+            <p>Click a movie to create or update your rank and review!</p>
+            {% else %}
+            <p>Login or Register above to contribute!</p>
+            {% endif %}
+            {% for movie in movies|dictsort:'rank__number__avg' %}
+            <div class="movie-poster-container">
+                <a href="{% url 'movie-detail' movie.id %}">
+                    <h5 class="rank-number"><span class="badge badge-light">{{ movie.rank__number__avg }}</span>
+                    </h5>
+                    <img class="movie-poster-rank" src="{{ movie.image.url }}" alt="{{ movie.title }}">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

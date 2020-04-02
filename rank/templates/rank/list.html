@@ -1,0 +1,36 @@
+{% extends "rank/base.html" %}
+{% block title %}- Rank List{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h3>Your Ranks</h3>
+        <p class="text-center">Ranks you have made so far</p>
+        {% if ranks %}
+        <table class="table table-sm table-bordered table-light table-hover slim-table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Rank</th>
+                    <th>Movie</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rank in ranks %}
+                <tr>
+                    <td>{{ rank.number }}</td>
+                    <td class="text-truncate text-nowrap" style="max-width: 180px;"><a
+                            href="{% url 'movie-detail' rank.movie.id %}">{{ rank.movie.title }}</a>
+                    </td>
+                    <td class="text-center text-nowrap"><a class="badge badge badge-dark"
+                            href="{% url 'rank-update' rank.id %}">Update</a> <a class="badge badge badge-danger"
+                            href="{% url 'rank-delete' rank.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No Reviews Yet</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

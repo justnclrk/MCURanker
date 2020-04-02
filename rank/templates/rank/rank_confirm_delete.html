@@ -1,0 +1,18 @@
+{% extends "rank/base.html" %}
+{% block title %}- Delete{% endblock %}
+{% block content %}
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <h4>Are you sure you want to delete your {{ rank.movie.title }} rank and review?</h4>
+            <small>This will also clear your review, you can just no rank this movie if you want to change the
+                rank.</small>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-danger" type="submit">Yes, Delete</button>
+            <a class="btn btn-secondary" href="{% url 'movie-detail' rank.movie.id %}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}

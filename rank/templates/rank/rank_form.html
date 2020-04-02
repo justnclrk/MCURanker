@@ -1,0 +1,60 @@
+{% extends "rank/base.html" %}
+{% block title %}
+{% if rank.movie %}- Update Rank{% else %}- Rank{% endif %}
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- Header And Movie -->
+<div class="row">
+    <div class="col-12">
+        {% if rank.movie %}
+        <h3>Update {{ rank.movie.title }}</h3>
+        <div class="movie-poster-container-lg col-sm-12"><img class="movie-poster-lg" src="{{ rank.movie.image.url }}"
+                alt="{{ rank.movie.title }}">
+            <ul class="list-unstyled d-none d-sm-block">
+                <li>{{ rank.movie.overview }}</li>
+                <li>Release Year: {{ rank.movie.release_date }}</li>
+                <li>Phase: {{ rank.movie.phase }}</li>
+            </ul>
+        </div>
+        {% else %}
+        <h3>Rank and Review {{ movie.title }}</h3>
+        <div class="movie-poster-container-lg"><img class="movie-poster-lg" src="{{ movie.image.url }}"
+                alt="{{ movie.title }}">
+            <ul class="list-unstyled d-none d-sm-block">
+                <li>{{ movie.overview }}</li>
+                <li class="italic">Release Year: {{ movie.release_date }}</li>
+                <li class="italic">Phase: {{ movie.phase }}</li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- End Header and Movie -->
+<div class="row">
+    <div class="col-12">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger btn-lrg" type="submit">Submit</button>
+                <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Your Other Reviews
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for rank in ranked_movies %}
+                        <a class="dropdown-item" href="{% url 'movie-detail' rank.movie.id %}">{{ rank.number }}
+                            -
+                            {{ rank.movie.title}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends "rank/base.html" %}
+{% block title %}- {{ movie.title }}{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h3>{{ movie.title }} <button type="button" class="btn btn-danger average"><small>Average Rank </small> <span
+            class="badge badge-light">
+            {{ average_rank.number__avg }}</span></button></h3>
+<div class="row">
+    <div class="col-12">
+        <div class="movie-poster-container-lg"><img class="movie-poster-lg" src="{{ movie.image.url }}"
+                alt="{{ movie.title }}">
+            <ul class="list-unstyled">
+                <li class="d-none d-sm-block">{{ movie.overview }}</li>
+                <li class="italic d-none d-sm-block">Release Year: {{ movie.release_date }}</li>
+                <li class="italic d-none d-sm-block">Phase: {{ movie.phase }}</li>
+                {% if ranked_movie is None %}
+                <li><a class="btn btn-danger" href="{% url 'rank-create' movie.id %}" role="button">Rank This Movie!</a>
+                </li>
+                {% else %}
+                <li><a class="btn btn-warning" href="{% url 'rank-update' ranked_movie.id %}" role="button">Update
+                        Rank</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <br>
+        <h3>Rank and Reviews</h3>
+        <ul class="list-group list-group-flush">
+            {% for rank in movie_ranks %}
+            <li class="list-group-item">
+                <div>
+                    <ul class="list-unstyled">
+                        <li class="lead"> <a href="{% url 'user-detail' rank.user.id %}"
+                                class="username text-primary">{{ rank.user.username }}</a></a></li>
+                        <li>Rank: <span class="rank">{{ rank.number }}</span></li>
+                        <li>{{ rank.review }}</li>
+                        <li><small class="text-muted">{{ rank.updated_at }}</small></li>
+                    </ul>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}

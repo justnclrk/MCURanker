@@ -1,0 +1,27 @@
+{% extends "rank/base.html" %}
+{% block title %}- Register{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="jumbotron register-login">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="rank">Welcome to the MCU Ranker</h2>
+            <p>This app will let you rank all of the MCU movies thus far, highlight your favorite moments and
+                compare your ranks with others, give it a try! In a future update, MCU TV shows will be
+                added.</p>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Register</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-primary btn-lg" type="submit">Assemble</button>
+            </div>
+        </form>
+        <hr>
+        <small class="text-muted">Already Assembled? <a class="ml-2" href="{% url 'login' %}">Login</a></small>
+    </div>
+</div>
+{% endblock content %}

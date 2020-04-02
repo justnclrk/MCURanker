@@ -1,0 +1,21 @@
+{% extends "rank/base.html" %}
+{% block title %}- Profile{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="slim-table">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>Update Profile Info</h3>
+                <fieldset class="form-group">
+                    {{ user_form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-danger" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,8 @@
+{% extends "rank/base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <p>You have been logged out.</p>
+    <hr>
+    <a class="btn btn-primary btn-lg" href="{% url 'login' %}">Log In Again</a>
+</div>
+{% endblock content %}
