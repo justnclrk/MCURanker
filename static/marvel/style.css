@@ -117,6 +117,9 @@ footer {
     text-align: center;
     margin: 0 auto;
 }
+small.text-muted {
+    display: none;
+}
 /* USER END */
 
 

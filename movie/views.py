@@ -33,5 +33,4 @@ class MovieDetailView(LoginRequiredMixin, DetailView):
         except Rank.DoesNotExist:
             user_rank = None
         context['ranked_movie'] = user_rank
-        print(user_rank)
         return context
