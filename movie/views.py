@@ -15,7 +15,7 @@ class MovieListView(ListView):
     context_object_name = 'movies'
 
     def get_queryset(self):
-        return Movie.objects.filter(active=True).annotate(Avg('rank__number'))
+        return Movie.objects.filter(active=True).annotate(Avg('rank__number')).order_by('rank__number')
 
 
 class MovieDetailView(LoginRequiredMixin, DetailView):
