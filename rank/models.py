@@ -23,9 +23,7 @@ class Rank(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['user', 'movie'], name='user_unique_movie'),
-            models.UniqueConstraint(
-                fields=['user', 'number'], name='user_unique_rank')
+                fields=['user', 'movie'], name='user_unique_movie')
         ]
 
     def __str__(self):

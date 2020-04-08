@@ -52,7 +52,8 @@ class RankCreateView(LoginRequiredMixin, CreateView):
         try:
             return super().form_valid(form)
         except IntegrityError:
-            form.add_error('number', 'Duplicate Rank or Movie')
+            form.add_error(
+                'movie', 'You already ranked and reviewed this movie')
             return self.form_invalid(form)
 
 

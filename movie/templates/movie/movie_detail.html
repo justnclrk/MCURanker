@@ -17,7 +17,7 @@
                 <li><a class="btn btn-danger" href="{% url 'rank-create' movie.id %}" role="button">Rank This Movie!</a>
                 </li>
                 {% else %}
-                <li><a class="btn btn-warning" href="{% url 'rank-update' ranked_movie.id %}" role="button">Update
+                <li><a class="btn btn-warning mt-2" href="{% url 'rank-update' ranked_movie.id %}" role="button">Update
                         Rank</a>
                 </li>
                 {% endif %}
@@ -38,7 +38,7 @@
                                 class="username text-primary">{{ rank.user.username }}</a></a></li>
                         <li>Rank: <span class="rank">{{ rank.number }}</span></li>
                         <li>{{ rank.review }}</li>
-                        <li><small class="text-muted">{{ rank.updated_at }}</small></li>
+                        <li><small><span class="text-muted">Posted: </span>{{ rank.updated_at }}</small></li>
                     </ul>
                 </div>
             </li>
