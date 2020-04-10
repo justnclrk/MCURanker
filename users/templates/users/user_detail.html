@@ -15,7 +15,7 @@
         {% for rank in user_ranks %}
         <tr>
             <td>{{ rank.number }}</td>
-            <td><a style="color: black" href="{% url 'movie-detail' rank.movie.id %}">{{ rank.movie.title }}</a>
+            <td><a style="color: black" href="{% url 'movie-detail' rank.movie.slug %}">{{ rank.movie.title }}</a>
             </td>
             <td style="max-width: 500px;">{{ rank.review }}</td>
         </tr>

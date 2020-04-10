@@ -10,9 +10,9 @@
             {% else %}
             <p>Login or Register above to contribute!</p>
             {% endif %}
-            {% for movie in movies %}
+            {% for movie in movies|dictsort:"rank__number__avg" %}
             <div class="movie-poster-container">
-                <a href="{% url 'movie-detail' movie.id %}">
+                <a href="{% url 'movie-detail' movie.slug %}">
                     <h5 class="rank-number"><span class="badge badge-light">{% if movie.rank__number__avg == None %}No
                             Ranks{% else %}{{ movie.rank__number__avg }}{% endif %}</span>
                     </h5>

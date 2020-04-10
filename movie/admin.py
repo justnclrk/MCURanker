@@ -1,4 +1,14 @@
 from django.contrib import admin
 from .models import Movie
 
-admin.site.register(Movie)
+
+class MovieModelAdmin(admin.ModelAdmin):
+    list_display = ["title", "phase",
+                    "release_date", "created_at", "updated_at"]
+    prepopulated_fields = {'slug': ('title',)}
+
+    class Meta:
+        model = Movie
+
+
+admin.site.register(Movie, MovieModelAdmin)

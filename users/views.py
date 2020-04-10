@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -46,10 +46,13 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     template_name = 'users/user_detail.html'
 
+    def get_object(self):
+        return get_object_or_404(User, username=self.kwargs['username'])
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['user_ranks'] = Rank.objects.filter(
-            user_id=self.kwargs['pk']).order_by('number')
+            user__username=self.kwargs['username']).order_by('number')
         return context
 
 

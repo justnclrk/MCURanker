@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path('list', RankListView.as_view(), name="rank-list"),
-    path('new/<int:pk>', RankCreateView.as_view(), name="rank-create"),
-    path('update/<int:pk>', RankUpdateView.as_view(), name="rank-update"),
-    path('delete/<int:pk>', RankDeleteView.as_view(), name="rank-delete"),
+    path('new/<str:slug>', RankCreateView.as_view(), name="rank-create"),
+    path('update/<str:slug>', RankUpdateView.as_view(), name="rank-update"),
+    path('delete/<str:slug>', RankDeleteView.as_view(), name="rank-delete"),
 ]

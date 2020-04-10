@@ -13,13 +13,17 @@
                 <li class="d-none d-sm-block">{{ movie.overview }}</li>
                 <li class="italic d-none d-sm-block">Release Year: {{ movie.release_date }}</li>
                 <li class="italic d-none d-sm-block">Phase: {{ movie.phase }}</li>
+                {% if movie.active is True %}
                 {% if ranked_movie is None %}
-                <li><a class="btn btn-danger" href="{% url 'rank-create' movie.id %}" role="button">Rank This Movie!</a>
+                <li><a class="btn btn-danger" href="{% url 'rank-create' movie.slug %}" role="button">Rank This
+                        Movie!</a>
                 </li>
                 {% else %}
-                <li><a class="btn btn-warning mt-2" href="{% url 'rank-update' ranked_movie.id %}" role="button">Update
+                <li><a class="btn btn-warning mt-2" href="{% url 'rank-update' ranked_movie.slug %}"
+                        role="button">Update
                         Rank</a>
                 </li>
+                {% endif %}
                 {% endif %}
             </ul>
         </div>
@@ -34,11 +38,11 @@
             <li class="list-group-item">
                 <div>
                     <ul class="list-unstyled">
-                        <li class="lead"> <a href="{% url 'user-detail' rank.user.id %}"
+                        <li class="lead"> <a href="{% url 'user-detail' rank.user.username %}"
                                 class="username text-primary">{{ rank.user.username }}</a></a></li>
                         <li>Rank: <span class="rank">{{ rank.number }}</span></li>
                         <li>{{ rank.review }}</li>
-                        <li><small><span class="text-muted">Posted: </span>{{ rank.updated_at }}</small></li>
+                        <li><small><span class="text-muted">Last Updated: </span>{{ rank.updated_at }}</small></li>
                     </ul>
                 </div>
             </li>

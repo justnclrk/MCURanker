@@ -19,11 +19,11 @@
                 <tr>
                     <td>{{ rank.number }}</td>
                     <td class="text-truncate text-nowrap" style="max-width: 180px;"><a
-                            href="{% url 'movie-detail' rank.movie.id %}">{{ rank.movie.title }}</a>
+                            href="{% url 'movie-detail' rank.movie.slug %}">{{ rank.movie.title }}</a>
                     </td>
                     <td class="text-center text-nowrap"><a class="badge badge badge-dark"
-                            href="{% url 'rank-update' rank.id %}">Update</a> <a class="badge badge badge-danger"
-                            href="{% url 'rank-delete' rank.id %}">Delete</a></td>
+                            href="{% url 'rank-update' rank.slug %}">Update</a> <a class="badge badge badge-danger"
+                            href="{% url 'rank-delete' rank.slug %}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

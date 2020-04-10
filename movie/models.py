@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 from django.contrib.auth.models import User
 from PIL import Image
 
@@ -6,13 +7,17 @@ from PIL import Image
 class Movie(models.Model):
     image = models.ImageField(
         default='default-movie.png', upload_to='movie_posters')
-    title = models.CharField(max_length=60)
+    title = models.CharField(max_length=60, unique=True)
     overview = models.TextField()
     phase = models.IntegerField()
     release_date = models.IntegerField()
+    slug = models.SlugField(unique=True)
     active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['release_date', 'phase']
 
     def __str__(self):
         return self.title
