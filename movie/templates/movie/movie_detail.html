@@ -39,11 +39,13 @@
                 <div>
                     <ul class="list-unstyled">
                         <li class="lead"> <a href="{% url 'user-detail' rank.user.username %}"
-                                class="username text-primary">{{ rank.user.username }}</a></a></li>
-                        <li>Rank: <span class="rank">{% if rank.number == None%}No
-                                Rank{% else %}{{ rank.number }}{% endif %}</span></li>
-                        <li>{{ rank.review }}</li>
-                        <li><small><span class="text-muted">Last Updated: </span>{{ rank.updated_at }}</small></li>
+                                class="username text-primary">{{ rank.user.username }} </a>(<span
+                                class="rank">{% if rank.number == None%}No
+                                Rank{% else %}{{ rank.number }}{% endif %}</span>)</li>
+                        <li class="mt-1 review">{{ rank.review }}</li>
+                        <li class="mt-1"><small><span class="text-muted">Last Updated:
+                                </span>{{ rank.updated_at|date:"SHORT_DATE_FORMAT" }}</small>
+                        </li>
                     </ul>
                 </div>
             </li>

@@ -101,6 +101,9 @@ footer {
     padding: 2px 6px;
     margin-bottom: 2px;
 }
+.review {
+    font-size: small;
+}
 /* MOVIE END */
 
 /* USER STYLES */
@@ -117,9 +120,7 @@ footer {
 
 #hint_id_username, #hint_id_password1, #hint_id_password2 {
     display: none;
- }
-
-
+}
 /* USER END */
 
 
