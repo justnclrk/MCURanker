@@ -4,7 +4,7 @@
 {% block content %}
 <h3>{{ movie.title }} <button type="button" class="btn btn-danger average"><small>Average Rank </small> <span
             class="badge badge-light">
-            {{ average_rank.number__avg }}</span></button></h3>
+            {{ average_rank.number__avg|floatformat }}</span></button></h3>
 <div class="row">
     <div class="col-12">
         <div class="movie-poster-container-lg"><img class="movie-poster-lg" src="{{ movie.image.url }}"
@@ -40,7 +40,8 @@
                     <ul class="list-unstyled">
                         <li class="lead"> <a href="{% url 'user-detail' rank.user.username %}"
                                 class="username text-primary">{{ rank.user.username }}</a></a></li>
-                        <li>Rank: <span class="rank">{{ rank.number }}</span></li>
+                        <li>Rank: <span class="rank">{% if rank.number == None%}No
+                                Rank{% else %}{{ rank.number }}{% endif %}</span></li>
                         <li>{{ rank.review }}</li>
                         <li><small><span class="text-muted">Last Updated: </span>{{ rank.updated_at }}</small></li>
                     </ul>

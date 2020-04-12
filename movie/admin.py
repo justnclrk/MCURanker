@@ -4,7 +4,7 @@ from .models import Movie
 
 class MovieModelAdmin(admin.ModelAdmin):
     list_display = ["title", "phase",
-                    "release_date", "created_at", "updated_at"]
+                    "release_date", "active"]
     prepopulated_fields = {'slug': ('title',)}
 
     class Meta:

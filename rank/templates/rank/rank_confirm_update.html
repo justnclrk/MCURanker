@@ -1,0 +1,17 @@
+{% extends "mcuranker/base.html" %}
+{% block title %}- Clear Ranks{% endblock %}
+{% block content %}
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <h4>Are you sure you want to clear all your ranks?</h4>
+            <small>Your reviews will still remain</small>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-danger" type="submit">Yes, Clear</button>
+            <a class="btn btn-secondary" href="{% url 'user-detail' user.username %}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}

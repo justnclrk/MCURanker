@@ -47,7 +47,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         {% for rank in ranked_movies %}
-                        <a class="dropdown-item" href="{% url 'movie-detail' rank.movie.id %}">{{ rank.number }}
+                        <a class="dropdown-item" href="{% url 'movie-detail' rank.movie.slug %}">{{ rank.number }}
                             -
                             {{ rank.movie.title}}</a>
                         {% endfor %}

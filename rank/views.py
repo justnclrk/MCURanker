@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.urls import reverse_lazy
 from django.db.models import F
+from django.http import Http404
 
 
 class RankListView(ListView):
@@ -105,3 +106,16 @@ class RankDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == rank.user:
             return True
         return False
+
+
+@login_required
+def RankClearAll(request, username):
+    if request.user.username != username:
+        raise Http404
+    ranks = Rank.objects.filter(user_id=request.user)
+    if request.method == 'POST':
+        Rank.objects.filter(user_id=request.user).update(number=None)
+        for rank in ranks:
+            rank.save()
+            return redirect('rank-list')
+    return render(request, 'rank/rank_confirm_update.html')

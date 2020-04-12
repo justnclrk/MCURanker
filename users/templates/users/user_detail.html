@@ -14,7 +14,8 @@
     <tbody>
         {% for rank in user_ranks %}
         <tr>
-            <td>{{ rank.number }}</td>
+            <td>{% if rank.number == None%}No
+                Rank{% else %}{{ rank.number }}{% endif %}</td>
             <td><a style="color: black" href="{% url 'movie-detail' rank.movie.slug %}">{{ rank.movie.title }}</a>
             </td>
             <td style="max-width: 500px;">{{ rank.review }}</td>

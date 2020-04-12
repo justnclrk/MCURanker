@@ -8,6 +8,7 @@ from .forms import UserRegisterForm, UserUpdateForm
 from django.contrib.auth.models import User
 from movie.models import Movie
 from rank.models import Rank
+from django.db.models import F
 
 
 def register(request):
@@ -52,12 +53,5 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['user_ranks'] = Rank.objects.filter(
-            user__username=self.kwargs['username']).order_by('number')
+            user__username=self.kwargs['username']).order_by(F('number').asc(nulls_last=True))
         return context
-
-
-class UserListView(ListView):
-    model = User
-    template_name = 'users/user_list.html'
-    context_object_name = 'users'
-    ordering = ['username']

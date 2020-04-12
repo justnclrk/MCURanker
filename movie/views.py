@@ -2,21 +2,25 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.db.models import Avg, F
+from django.db.models import Avg, F, Func
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.views.generic import DetailView, ListView
 from .models import Movie
 from rank.models import Rank
 
 
+class Round(Func):
+    function = 'ROUND'
+    arity = 2
+
+
 class MovieListView(ListView):
     model = Movie
     template_name = 'movie/list.html'
     context_object_name = 'movies'
-    ordering = ['rank__number']
 
     def get_queryset(self):
-        return Movie.objects.filter(active=True).annotate(Avg('rank__number')).distinct()
+        return Movie.objects.filter(active=True).annotate(average_rank=Round(Avg('rank__number'), 1)).order_by(F('average_rank').asc(nulls_last=True))
 
 
 class MovieDetailView(LoginRequiredMixin, DetailView):

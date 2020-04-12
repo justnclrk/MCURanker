@@ -17,7 +17,7 @@
             <tbody>
                 {% for rank in ranks %}
                 <tr>
-                    <td>{{ rank.number }}</td>
+                    <td>{% if rank.number == None%}No Rank{% else %}{{ rank.number }}{% endif %}</td>
                     <td class="text-truncate text-nowrap" style="max-width: 180px;"><a
                             href="{% url 'movie-detail' rank.movie.slug %}">{{ rank.movie.title }}</a>
                     </td>
@@ -28,6 +28,10 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="text-center">
+            <a href="{% url 'rank-clear-all' request.user.username %}" class="btn btn-danger m-2">Clear
+                Ranks</a>
+        </div>
         {% else %}
         <p>No Reviews Yet</p>
         {% endif %}
