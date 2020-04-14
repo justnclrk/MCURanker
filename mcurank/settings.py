@@ -31,12 +31,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'mcuranker.urls'
+ROOT_URLCONF = 'mcurank.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [(os.path.join(BASE_DIR, 'mcuranker', 'templates')), ],
+        'DIRS': [(os.path.join(BASE_DIR, 'mcurank', 'templates')), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -49,7 +49,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mcuranker.wsgi.application'
+WSGI_APPLICATION = 'mcurank.wsgi.application'
 
 DATABASES = {
     'default': {

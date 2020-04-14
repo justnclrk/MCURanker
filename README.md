@@ -1,2 +1,2 @@
-# MCURanker
- A ranking application for the mcuranker Cinematic Universe
+# mcurank
+ A ranking application for the mcurank Cinematic Universe

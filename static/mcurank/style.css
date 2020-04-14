@@ -10,6 +10,9 @@ body {
     display: flex;
     flex-direction: column;
 }
+.nav-brand{
+    color: #e74c3c;
+}
 a {
     color: black;
 }

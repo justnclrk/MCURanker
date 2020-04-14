@@ -1,4 +1,4 @@
-from mcuranker.utils import unique_slug_generator
+from mcurank.utils import unique_slug_generator
 from django.db import models
 from django.contrib.auth.models import User
 from movie.models import Movie
