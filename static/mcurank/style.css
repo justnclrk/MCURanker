@@ -1,8 +1,8 @@
 /* GLOBAL */
-@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 * {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 body {
     background-color: #bdc3c7;
@@ -65,14 +65,6 @@ footer {
 /* RANK END */
 
 /* MOVIE STYLES */
-.rank-number {
-    position: absolute; 
-    bottom: 0;
-    text-align: center;
-    width: 100%;
-    margin: 0;
-    font-size: x-large;
-}
 .movie-poster-container-sm {
     vertical-align: top;
     text-align: center;
@@ -87,18 +79,41 @@ footer {
     height: auto;
 }
 .movie-poster-container {
+    box-sizing: border-box;
     position: relative;
-    width: 120px;
+    width: 130px;
     height: auto;
     margin: 5px;
     display: inline-block;
-}
-.movie-poster-rank {
-    width: 120px;
-    height: auto;
-    border: 4px solid #f8f9fa;
+    border: 4px solid #ecf0f1;
     border-radius: 2px;
     box-shadow: 2px 3px 8px #1d1d1d;
+}
+.rank-number {
+    position: absolute; 
+    margin-left: 3px;
+    font-weight: bold;
+    color: black;
+}
+.corner-triangle {
+    position: absolute; 
+    height: 0;
+    width: 0;
+    border-top: 60px solid #ecf0f1;
+    border-right: 60px solid transparent;
+}
+.movie-poster-rank {
+    width: 122px;
+    height: auto;
+}
+.movie-poster-container:hover {
+    border-color: #f39c12;
+}
+.movie-poster-container:hover .corner-triangle  {
+    border-top: 60px solid #f39c12;
+}
+.movie-poster-container:hover .rank-number  {
+    font-size: larger;
 }
 .average {
     padding: 2px 6px;

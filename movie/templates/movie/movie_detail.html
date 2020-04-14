@@ -3,8 +3,8 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <h3>{{ movie.title }} <button type="button" class="btn btn-danger average"><small>Average Rank </small> <span
-            class="badge badge-light">
-            {{ average_rank.number__avg|floatformat }}</span></button></h3>
+            class="badge badge-light">{% if average_rank.number__avg is None %}n/a{% else %}
+            {{ average_rank.number__avg|floatformat }}{% endif %}</span></button></h3>
 <div class="row">
     <div class="col-12">
         <div class="movie-poster-container-lg"><img class="movie-poster-lg" src="{{ movie.image.url }}"
