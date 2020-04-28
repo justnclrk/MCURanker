@@ -1,12 +1,10 @@
-from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm
 from django.contrib.auth.models import User
-from movie.models import Movie
 from rank.models import Rank
 from django.db.models import F
 
