@@ -1,5 +1,5 @@
 {% extends "mcurank/base.html" %}
-{% block title %}- {{ movie.title }}{% endblock %}
+{% block title %}{{ movie.title }} / {% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
 <h3>{{ movie.title }} <button type="button" class="btn btn-danger average"><small>Average Rank </small> <span
