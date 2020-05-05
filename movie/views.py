@@ -1,9 +1,5 @@
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.db.models import Avg, F, Func
-from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.views.generic import DetailView, ListView
 from .models import Movie
 from rank.models import Rank

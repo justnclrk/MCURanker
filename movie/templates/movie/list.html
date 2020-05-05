@@ -1,6 +1,6 @@
 {% extends "mcurank/base.html" %}
 {% block content %}
-<h3>Titles by Average Rank</h3>
+<h3>Community Ranks</h3>
 <div class="row">
     <div class="col-12">
         <div class="text-center">
@@ -18,12 +18,13 @@
 
                     </div>
                     <span
-                        class="rank-number">{% if movie.average_rank == None %}n/a{% else %}{{ movie.average_rank|floatformat }}{% endif %}
-                    </span>
+                        class="rank-number">{{ forloop.counter }}</span>
                     <img class="movie-poster-rank" src="{{ movie.image.url }}" alt="{{ movie.title }}">
                 </a>
             </div>
             {% endfor %}
+            <br>
+            <small>*Ties are filtered by oldest to newest.</small>
         </div>
     </div>
 </div>
