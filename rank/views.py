@@ -1,13 +1,11 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
-from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 from .models import Rank
 from movie.models import Movie
-from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.urls import reverse_lazy
 from django.db.models import F
@@ -35,7 +33,7 @@ class RankListView(ListView):
 class MovieIsActiveMixin:
     def dispatch(self, request, *args, **kwargs):
         self.movie = get_object_or_404(Movie, slug=kwargs['slug'])
-        if self.movie.active == True:
+        if self.movie.active is True:
             return super().dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied

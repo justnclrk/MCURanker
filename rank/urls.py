@@ -1,6 +1,5 @@
 from django.urls import path
 from .views import RankListView, RankCreateView, RankUpdateView, RankDeleteView, RankClearAll
-from . import views
 
 urlpatterns = [
     path('list', RankListView.as_view(), name="rank-list"),
