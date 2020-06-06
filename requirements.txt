@@ -1,6 +1,7 @@
+-i https://pypi.org/simple/
 asgiref==3.2.7
-Django==3.0.5
 django-crispy-forms==1.9.0
-Pillow==7.1.1
-pytz==2019.3
+django==3.0.7
+pillow==7.1.1
+pytz==2020.1
 sqlparse==0.3.1
