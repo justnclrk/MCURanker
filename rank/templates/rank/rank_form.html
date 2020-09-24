@@ -1,6 +1,6 @@
 {% extends "mcurank/base.html" %}
 {% block title %}
-{% if rank.movie %}Update / {% else %}New / {% endif %}
+{% if rank.movie %} | Update{% else %} | New{% endif %}
 {% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
