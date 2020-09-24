@@ -1,26 +1,24 @@
 {% extends "mcurank/base.html" %}
-{% block title %}{{ movie.title }} / {% endblock %}
+{% block title %} | {{ movie.title }}{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h3>{{ movie.title }} <button type="button" class="btn btn-danger average"><small>Average Rank </small> <span
-            class="badge badge-light">{% if average_rank.number__avg is None %}n/a{% else %}
-            {{ average_rank.number__avg|floatformat }}{% endif %}</span></button></h3>
-<div class="row">
-    <div class="col-12">
-        <div class="movie-poster-container-lg"><img class="movie-poster-lg" src="{{ movie.image.url }}"
-                alt="{{ movie.title }}">
-            <ul class="list-unstyled">
-                <li class="d-none d-sm-block">{{ movie.overview }}</li>
-                <li class="italic d-none d-sm-block">Release Year: {{ movie.release_date }}</li>
-                <li class="italic d-none d-sm-block">Phase: {{ movie.phase }}</li>
+<h3>{{ movie.title }}{% if average_rank.number__avg is None %}n/a{% else %}
+    {{ average_rank.number__avg|floatformat }}{% endif %}</h3>
+<div>
+    <div>
+        <div>
+            <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
+            <ul>
+                <li>{{ movie.overview }}</li>
+                <li>Release Year: {{ movie.release_date }}</li>
+                <li>Phase: {{ movie.phase }}</li>
                 {% if movie.active is True %}
                 {% if ranked_movie is None %}
-                <li><a class="btn btn-danger" href="{% url 'rank-create' movie.slug %}" role="button">Rank This
+                <li><a href="{% url 'rank-create' movie.slug %}" role="button">Rank This
                         Movie!</a>
                 </li>
                 {% else %}
-                <li><a class="btn btn-warning mt-2" href="{% url 'rank-update' ranked_movie.slug %}"
-                        role="button">Update
+                <li><a href="{% url 'rank-update' ranked_movie.slug %}" role="button">Update
                         Rank</a>
                 </li>
                 {% endif %}
@@ -29,21 +27,20 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
+<div>
+    <div>
         <br>
         <h3>Rank and Reviews</h3>
-        <ul class="list-group list-group-flush">
+        <ul>
             {% for rank in movie_ranks %}
-            <li class="list-group-item">
+            <li>
                 <div>
-                    <ul class="list-unstyled">
-                        <li class="lead"> <a href="{% url 'user-detail' rank.user.username %}"
-                                class="username text-primary">{{ rank.user.username }} </a>(<span
-                                class="rank">{% if rank.number == None%}No
+                    <ul>
+                        <li> <a href="{% url 'user-detail' rank.user.username %}">{{ rank.user.username }}
+                            </a>(<span>{% if rank.number == None%}No
                                 Rank{% else %}{{ rank.number }}{% endif %}</span>)</li>
-                        <li class="mt-1 review">{{ rank.review }}</li>
-                        <li class="mt-1"><small><span class="text-muted">Last Updated:
+                        <li>{{ rank.review }}</li>
+                        <li><small><span>Last Updated:
                                 </span>{{ rank.updated_at|date:"SHORT_DATE_FORMAT" }}</small>
                         </li>
                     </ul>

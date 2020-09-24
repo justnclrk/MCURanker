@@ -1,22 +1,22 @@
 {% extends "mcurank/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="jumbotron register-login">
-    <div class="container">
-        <h1 class="text-center"><span class="nav-brand">MCU</span>RANK</h1>
+<div>
+    <div>
+        <h1><span>MCU</span>RANK</h1>
         <form method="POST">
             {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Welcome Back!</legend>
+            <fieldset>
+                <legend>Welcome Back!</legend>
                 {{ form|crispy }}
             </fieldset>
-            <div class="form-group">
-                <button class="btn btn-primary btn-lg" type="submit">Let's Go</button>
-                <small class="text-muted ml-2"><a href="{% url 'password_reset' %}">Forgot Password?</a></small>
+            <div>
+                <button type="submit">Let's Go</button>
+                <small><a href="{% url 'password_reset' %}">Forgot Password?</a></small>
             </div>
         </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">Need an account? <a class="ml-2" href="{% url 'register' %}">Register</a></small>
+        <div>
+            <small>Need an account? <a href="{% url 'register' %}">Register</a></small>
         </div>
     </div>
 </div>
