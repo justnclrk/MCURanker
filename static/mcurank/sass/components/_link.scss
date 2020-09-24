@@ -1,0 +1,19 @@
+a:link,
+a:visited {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header {
+    
+    a {
+        color: $secondary-light-1;
+    }
+    
+}
+
+.title__list {
+    a {
+        color: black;
+    }
+}

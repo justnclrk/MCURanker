@@ -1,5 +1,36 @@
 .container {
-    max-width: 120rem;
-    margin: 4rem auto;
-    background: red;
+    max-width: 140rem;
+    margin: 8rem auto;
+    background: $secondary-light-1;
+    box-shadow: 5px 5px 3px $secondary;
+}
+
+.messages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    background: pink;
+    margin-bottom: 1rem;
+}
+
+.content__layout {
+    display: flex;
+    min-height: 70rem;
+
+    .gutter {
+        width: 10rem;
+    }
+
+    .main {
+        flex: 1;
+        border: 1px solid black;
+    }
+}
+
+.footer {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

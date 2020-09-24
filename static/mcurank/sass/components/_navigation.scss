@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    align-items: center;
+    background: $primary;
+    height: 10rem;
+
+    .logo {
+
+        &__box {
+            margin-right: 3rem;
+        }
+    }
+
+    .navigation {
+
+        &__list {
+            list-style: none;
+            display: flex;
+
+            &--item {
+
+                &:not(:last-child) {
+                    margin-right: 2rem;
+                }
+            }
+        }
+    }
+}

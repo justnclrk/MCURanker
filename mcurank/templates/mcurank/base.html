@@ -7,56 +7,66 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description"
         content="This app will let you rank all of the MCU movies thus far, highlight your favorite moments and compare your ranks with others.">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
         rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'mcurank/sass/main.css' %}">
-    <title>MCURANK {% block title %}{{ subtitle }}{% endblock %}</title>
+    <title>mcurank {% block title %}{{ subtitle }}{% endblock %}</title>
 </head>
 
 <body>
     <div class="container">
-        <header>
+        <header class="header">
             <h1 class="logo__box">
                 <a class="logo" href="{% url 'movie-list'  %}">
-                    <span class="red">mcu</span><span class="white">rank</span>
+                    <span class="logo__red">mcu</span><span class="logo__white">rank</span>
                 </a>
             </h1>
-            <nav>
-                <ul>
+            <nav class="navigation">
+                <ul class="navigation__list">
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'movie-list'  %}">home</a></li>
-                    <li><a href="{% url 'rank-list'  %}">your ranks</a></li>
-                    <li><a href="{% url 'profile' %}">update profile</a></li>
-                    <li><a href="{% url 'logout' %}">logout</a></li>
+                    <li class="navigation__list--item"><a href="{% url 'movie-list'  %}">home</a></li>
+                    <li class="navigation__list--item"><a href="{% url 'rank-list'  %}">your ranks</a></li>
+                    <li class="navigation__list--item"><a href="{% url 'profile' %}">update profile</a></li>
+                    <li class="navigation__list--item"><a href="{% url 'logout' %}">logout</a></li>
                     {% else %}
-                    <li><a href="{% url 'movie-list'  %}">home</a></li>
-                    <li><a href="{% url 'login' %}">login</a></li>
-                    <li><a href="{% url 'register' %}">register</a></li>
+                    <li class="navigation__list--item"><a href="{% url 'movie-list'  %}">home</a></li>
+                    <li class="navigation__list--item"><a href="{% url 'login' %}">login</a></li>
+                    <li class="navigation__list--item"><a href="{% url 'register' %}">register</a></li>
                     {% endif %}
                 </ul>
             </nav>
         </header>
 
         <!-- messages -->
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-        {% endif %}
+        <div class="messages">
+            message
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+        </div>
         <!-- messages -->
 
-        <main>
-            {% block content %}
-            {% endblock %}
-        </main>
+        <div class="content__layout">
 
-
-        <footer>
-            <div>
-                <small>This is a personal project, mcurank has no affiliation with Marvel Studios or Disney.</small>
+            <div class="gutter">
             </div>
+
+            <main class="main">
+                {% block content %}
+                {% endblock %}
+            </main>
+
+            <div class="gutter">
+            </div>
+
+        </div>
+
+
+        <footer class="footer">
+            <p>This is a personal project, mcurank has no affiliation with Marvel Studios or Disney.</p>
         </footer>
     </div>
 </body>

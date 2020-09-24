@@ -1,30 +1,45 @@
 {% extends "mcurank/base.html" %}
 {% block content %}
-<h3>Community Ranks</h3>
-<div>
-    <div>
-        <div>
-            <div>
-                {% if user.is_authenticated %}
-                <span>Click a movie to create or update your rank and review!</span>
-                {% else %}
-                <span>Login or Register above to contribute!</span>
-                {% endif %}
-            </div>
-            {% for movie in movies %}
-            <div>
-                <a href="{% url 'movie-detail' movie.slug %}">
-                    <div>
+<h2>Highlights</h2>
+<section class="highlights">
 
-                    </div>
-                    <span>{{ forloop.counter }}</span>
-                    <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
-                </a>
-            </div>
-            {% endfor %}
-            <br>
-            <small>*Ties are filtered by oldest to newest.</small>
-        </div>
+</section>
+
+<section class="title__list">
+    <div>
+        {% if user.is_authenticated %}
+        <p class="message__text">Click a movie to create or update your rank and review!</p>
+        {% else %}
+        <p class="message__text">Login or Register above to contribute!</p>
+        {% endif %}
     </div>
-</div>
+    {% for movie in movies %}
+    <div class="title__container">
+        <a class="title" href="{% url 'movie-detail' movie.slug %}">
+            <h3 class="title__header">{{ movie.title }}</h3>
+            <div class="title__stats">
+                <div class="title__rank">
+                    <p class="title__number">{{ forloop.counter }}</p>
+                    <p class="title__text">Rank</p>
+                </div>
+                <div class="title__phase">
+                    <p class="title__number">{{ movie.phase }}</p>
+                    <p class="title__text">Phase</p>
+                </div>
+                <div class="title__review__total">
+                    <p class="title__number">
+                        {% for review in total_reviews %}
+                        {% if review.movie.id == movie.id %}
+                        {{ review|length }}
+                        {% endif %}
+                        {% endfor %}
+                    </p>
+                    <p class="title__text">Reviews</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</section>
+
 {% endblock content %}

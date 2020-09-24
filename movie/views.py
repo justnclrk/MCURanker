@@ -17,6 +17,11 @@ class MovieListView(ListView):
 
     def get_queryset(self):
         return Movie.objects.filter(active=True).annotate(average_rank=Round(Avg('rank__number'), 1)).order_by(F('average_rank').asc(nulls_last=True))
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['total_reviews'] = Rank.objects.all()
+        return context
 
 
 class MovieDetailView(LoginRequiredMixin, DetailView):
