@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Avg, F, Func
+from django.db.models import Avg, F, Func, Count, Max
 from django.views.generic import DetailView, ListView
 from .models import Movie
 from rank.models import Rank
@@ -20,7 +20,8 @@ class MovieListView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['total_reviews'] = Rank.objects.all()
+        context['newest_title'] = Movie.objects.filter(active=True).last()
+        context['most_reviews'] = Movie.objects.filter(active=True).annotate(review_count=Count('rank')).order_by("-review_count").first()
         return context
 
 

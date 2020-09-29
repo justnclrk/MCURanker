@@ -1,8 +1,10 @@
 .container {
-    max-width: 140rem;
-    margin: 8rem auto;
+    max-width: 100rem;
+    margin: 4rem auto;
     background: $secondary-light-1;
-    box-shadow: 5px 5px 3px $secondary;
+    box-shadow: 5px 5px 3px black;
+    border-radius: 1rem;
+    overflow: hidden;
 }
 
 .messages {
@@ -10,13 +12,11 @@
     align-items: center;
     justify-content: center;
     height: 4rem;
-    background: pink;
-    margin-bottom: 1rem;
 }
 
 .content__layout {
+    min-height: 60rem;
     display: flex;
-    min-height: 70rem;
 
     .gutter {
         width: 10rem;
@@ -24,7 +24,17 @@
 
     .main {
         flex: 1;
-        border: 1px solid black;
+
+        .section {
+            width: 100%;
+            margin-bottom: 4rem;
+
+            &__tertiary {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     }
 }
 

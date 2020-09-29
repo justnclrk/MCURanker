@@ -1,45 +1,86 @@
 {% extends "mcurank/base.html" %}
 {% block content %}
-<h2>Highlights</h2>
-<section class="highlights">
+<div class="welcome">
+    {% if user.is_authenticated %}
+    <p class="message__text">Welcome back!</p>
+    <p class="message__text">Click a title to create or update your rank and review!</p>
+    {% else %}
+    <p class="message__text">Welcome to MCU Rank!</p>
+    <p class="message__text">
+    <p>This is a ranking application built for the Marvel Cinematic Universe.</p>
+    <p>Login or Register above to rank and review your favorite titles!</p>
+    </p>
+    {% endif %}
+</div>
 
+<section class="section section__primary">
+    <h2 class="section__header">Quick Highlights</h2>
+    <div class="highlights">
+        <div class="highlights__item">
+            <a href="{% url 'movie-detail' most_reviews.slug %}">
+                <figure class="title__img__container">
+                    <img class="title__img" src="{{ most_reviews.image.url }}" alt="{{ most_reviews.title }}">
+                </figure>
+            </a>
+            <p class="highlights__text">Most Reviewed Title</p>
+        </div>
+        <div class="highlights__item">
+            <a href="{% url 'movie-detail' movies.0.slug %}">
+                <figure class="title__img__container">
+                    <img class="title__img" src="{{ movies.0.image.url }}" alt="{{ movies.0.title }}">
+                </figure>
+            </a>
+            <p class="highlights__text">Top Rated Title</p>
+        </div>
+
+        <div class="highlights__item">
+            <a href="{% url 'movie-detail' newest_title.slug %}">
+                <figure class="title__img__container">
+                    <img class="title__img" src="{{ newest_title.image.url }}" alt="{{ newest_title.title }}">
+                </figure>
+            </a>
+            <p class="highlights__text">Latest Title</p>
+        </div>
+    </div>
 </section>
 
-<section class="title__list">
-    <div>
-        {% if user.is_authenticated %}
-        <p class="message__text">Click a movie to create or update your rank and review!</p>
-        {% else %}
-        <p class="message__text">Login or Register above to contribute!</p>
-        {% endif %}
+<section class="section section__secondary">
+    <h2 class="section__header">Community Ranks</h2>
+    <div class="title__list">
+        {% for movie in movies %}
+        <div class="title__container">
+            <a class="title" href="{% url 'movie-detail' movie.slug %}">
+
+                <div class="title__text">
+                    <h3 class="title__header">{{ movie.title }}</h3>
+                    <div class="title__stats__container">
+                        <div class="title__stats__number__hovered">{{ forloop.counter }}</div>
+                        <div class="title__stats">
+
+                            <div class="title__stats__rank">
+                                <p class="title__stats__number">{{ forloop.counter }}</p>
+                                <p class="title__stats__text">Rank</p>
+                            </div>
+                        </div>
+                        <div class="title__stats">
+                            <div class="title__stats__phase">
+                                <p class="title__stats__number">{{ movie.phase }}</span>
+                                <p class="title__stats__text">Phase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="title__animation">
+                    <img src="/media/movie_teasers/{{ movie.slug }}-{{ movie.id }}.gif" alt="">
+                </div>
+
+            </a>
+
+
+        </div>
+        {% endfor %}
     </div>
-    {% for movie in movies %}
-    <div class="title__container">
-        <a class="title" href="{% url 'movie-detail' movie.slug %}">
-            <h3 class="title__header">{{ movie.title }}</h3>
-            <div class="title__stats">
-                <div class="title__rank">
-                    <p class="title__number">{{ forloop.counter }}</p>
-                    <p class="title__text">Rank</p>
-                </div>
-                <div class="title__phase">
-                    <p class="title__number">{{ movie.phase }}</p>
-                    <p class="title__text">Phase</p>
-                </div>
-                <div class="title__review__total">
-                    <p class="title__number">
-                        {% for review in total_reviews %}
-                        {% if review.movie.id == movie.id %}
-                        {{ review|length }}
-                        {% endif %}
-                        {% endfor %}
-                    </p>
-                    <p class="title__text">Reviews</p>
-                </div>
-            </div>
-        </a>
-    </div>
-    {% endfor %}
 </section>
 
 {% endblock content %}

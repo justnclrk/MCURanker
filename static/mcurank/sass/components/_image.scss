@@ -1,9 +1,38 @@
 .title {
+    
+    // title list
     &__img__container {
-        width: 10rem;
+        width: 15rem;
+        margin-bottom: 1rem;
+        transition: all .2s;
+
+        &:hover {
+            width: 16rem;
+        }
     }
 
     &__img {
         width: 100%;
+        border-radius: .4rem;
+        transition: all .2s;
+
+        &:hover {
+            box-shadow: 5px 5px 3px black;
+        }
+    }
+    
+    // title detail
+    &__detail__img__container {
+        transition: all .2s;
+        margin-right: 2rem;
+        flex: 0 0 20%;
+
+    }
+
+    &__detail__img {
+        width: 100%;
+        border-radius: .4rem;
+        transition: all .2s;
+
     }
 }

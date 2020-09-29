@@ -11,6 +11,7 @@
         rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'mcurank/sass/main.css' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'mcurank/img/favicon.svg' %}">
     <title>mcurank {% block title %}{{ subtitle }}{% endblock %}</title>
 </head>
 
@@ -40,7 +41,6 @@
 
         <!-- messages -->
         <div class="messages">
-            message
             {% if messages %}
             {% for message in messages %}
             <div class="alert alert-{{ message.tags }}">{{ message }}</div>
@@ -69,6 +69,8 @@
             <p>This is a personal project, mcurank has no affiliation with Marvel Studios or Disney.</p>
         </footer>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'mcurank/main.js' %}"></script>
 </body>
 
 </html>

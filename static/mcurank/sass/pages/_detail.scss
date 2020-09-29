@@ -1,0 +1,14 @@
+.title {
+    &__detail {
+        display: flex;
+        width: 100%;
+
+        &__rank__text {
+            margin-bottom: 2rem;
+        }
+
+        &__list {
+            list-style: none;
+        }
+    }
+}

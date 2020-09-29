@@ -1,38 +1,138 @@
+.welcome {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4rem;
+}
 .highlights {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    min-height: 20rem;
+    height: 27rem;
+    
+
+    &__item {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 33.33%;
+        height: 100%;
+    }
+}
+
+.section {
+    &__header {
+        margin-bottom: 1rem;
+    }
 }
 
 .title {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+
+    &__text {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        padding: 0 2rem;
+        background: $secondary-light-1;  
+
+        &:hover {
+            background: transparent;
+            color: $secondary-light-1;
+
+            .title__header {
+                background: #e639478a;
+                font-weight: 400;
+                border-radius: 4rem;
+            }
+
+            .title__stats {
+                display: none;
+            }
+
+            .title__stats__number__hovered {
+                opacity: 1;
+                
+            }
+        }
+    }
+
+    &__text::after {
+        content: "";
+        position: absolute;
+        z-index: -5;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        background-color: $secondary-light-1;
+        transition: all .8s;
+    }
+
+    &__text:hover::after {
+        width: 0;
+    }
+
+    &__stats__number__hovered {
+        opacity: 0;
+        color: $secondary-light-1;
+    }
+
+    &__stats__phase {
+        opacity: 1;
+    }
+
+    &__header, &__stats, &__stats__number__hovered {
+        padding: 1rem;
+    }
 
     &__list {
-        min-height: 50rem;
+        height: 100%;
+        align-items: center;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 0 2rem;
     }
     
 
     &__container {
+        display: flex;
+        align-items: center;
         width: 100%;
-        border: 1px solid black;
-        margin-bottom: 2rem;
+        height: 7rem;
+        position: relative;
+        border: 1px solid $secondary-light-1;
+    }
+
+    &__animation {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -10;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 6rem;
+            filter: brightness(50%);
+        }
     }
 
     &__stats {
         display: flex;
         text-align: center;
+        margin: 0 1rem;
 
-        & > * {
-            margin: 0 2rem;
+        &__container {
+            display: flex;
         }
+
     }
 }
