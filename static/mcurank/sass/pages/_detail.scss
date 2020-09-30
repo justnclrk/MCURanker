@@ -2,13 +2,80 @@
     &__detail {
         display: flex;
         width: 100%;
+        margin-bottom: 4rem;
 
-        &__rank__text {
-            margin-bottom: 2rem;
+        &__header {
+            text-align: center;
+        }
+
+        &__rank {
+            margin-bottom: 4rem;
+            background: $secondary;
+            color: $secondary-light-1;
+            width: 50%;
+            padding: .2rem 0;
+            text-align: center;
+            border-radius: .3rem;
         }
 
         &__list {
             list-style: none;
+            &--item {
+                &:not(:last-child) {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+        &__button {
+            background: $primary;
+            border-radius: .5rem;
+            padding: 1rem;
+            display: inline-block;
+            transition: all .2s;
+
+            &:hover {
+                background: $secondary;
+            }
+        }
+    }
+
+    &__reviews {
+        width: 100%;
+    }
+
+    &__review {
+        padding: 2rem;
+        background: white;
+        border-radius: .4rem;
+        box-shadow: 1px 2px 3px $secondary;
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        &__header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        &__username {
+            background: $secondary;
+            padding: .5rem 2rem .5rem 1rem;
+            border-radius: .4rem;
+        }
+
+        &__rank {
+            background: $primary;
+            padding: .5rem;
+            border-radius: .4rem;
+            transform: translateX(-1rem);
+        }
+
+        &__date {
+            color: $secondary;
+            margin-top: 1rem;
         }
     }
 }

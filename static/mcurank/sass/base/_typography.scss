@@ -5,6 +5,7 @@
     .logo {
         font-size: 3rem;
         font-weight: 400;
+        font-family: 'Bowlby One SC', cursive;
     }
 }
 
@@ -13,13 +14,14 @@
 }
 
 .welcome {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 300;
     letter-spacing: .1rem;
 
     .message__text:not(:last-child) {
-        font-weight: 500;
+        font-weight: 600;
         font-size: 3rem;
+        text-transform: uppercase;
     }
 }
 
@@ -27,20 +29,21 @@
     &__header {
         text-transform: uppercase;
         letter-spacing: .1rem;
+        font-size: 2rem;
     }
 }
 
 .highlights {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 300;
-    text-transform: uppercase;
+    letter-spacing: .1rem;
 }
 
 .title {
 
     &__header {
         font-size: 1.5rem;
-        font-weight: 300;
+        font-weight: 400;
         letter-spacing: .1rem;
     }
 
@@ -65,13 +68,52 @@
     }
 
     &__detail__header {
+        letter-spacing: .2rem;
         font-size: 4rem;
-        font-weight: 300;
-        letter-spacing: .1rem;
+        font-family: 'Bowlby One SC', cursive;
     }
+
+    &__detail__rank {
+        font-weight: 500;
+        letter-spacing: .1rem;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+    }
+
     &__detail__list {
         font-size: 1.2rem;
-        font-weight: 300;
+        font-weight: 400;
+        line-height: 1.8;
+        letter-spacing: .1rem;
+    }
+
+    &__detail__button {
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    &__review {
+        font-size: 1.4rem;
+        letter-spacing: .1rem;
+        line-height: 1.8;
+
+        &__username {
+            font-size: 2rem;
+            letter-spacing: .1rem;
+            text-transform: capitalize;
+        }
+
+        &__rank {
+            font-size: 1rem;
+            letter-spacing: .1rem;
+        }
+
+        &__date {
+            font-size: 1.2rem;
+            letter-spacing: .1rem;
+        }
+
     }
 
 }

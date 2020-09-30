@@ -29,6 +29,7 @@ body {
 .header .logo {
   font-size: 3rem;
   font-weight: 400;
+  font-family: 'Bowlby One SC', cursive;
 }
 
 .messages {
@@ -36,30 +37,32 @@ body {
 }
 
 .welcome {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: .1rem;
 }
 
 .welcome .message__text:not(:last-child) {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 3rem;
+  text-transform: uppercase;
 }
 
 .section__header {
   text-transform: uppercase;
   letter-spacing: .1rem;
+  font-size: 2rem;
 }
 
 .highlights {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 300;
-  text-transform: uppercase;
+  letter-spacing: .1rem;
 }
 
 .title__header {
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: .1rem;
 }
 
@@ -84,14 +87,51 @@ body {
 }
 
 .title__detail__header {
+  letter-spacing: .2rem;
   font-size: 4rem;
-  font-weight: 300;
+  font-family: 'Bowlby One SC', cursive;
+}
+
+.title__detail__rank {
+  font-weight: 500;
   letter-spacing: .1rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
 }
 
 .title__detail__list {
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: .1rem;
+}
+
+.title__detail__button {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.title__review {
+  font-size: 1.4rem;
+  letter-spacing: .1rem;
+  line-height: 1.8;
+}
+
+.title__review__username {
+  font-size: 2rem;
+  letter-spacing: .1rem;
+  text-transform: capitalize;
+}
+
+.title__review__rank {
+  font-size: 1rem;
+  letter-spacing: .1rem;
+}
+
+.title__review__date {
+  font-size: 1.2rem;
+  letter-spacing: .1rem;
 }
 
 .title__img__container {
@@ -113,17 +153,15 @@ body {
 }
 
 .title__img:hover {
-  -webkit-box-shadow: 5px 5px 3px black;
-          box-shadow: 5px 5px 3px black;
+  -webkit-box-shadow: 5px 5px 3px #1d3557;
+          box-shadow: 5px 5px 3px #1d3557;
 }
 
 .title__detail__img__container {
   -webkit-transition: all .2s;
   transition: all .2s;
   margin-right: 2rem;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 20%;
-          flex: 0 0 20%;
+  width: 20rem;
 }
 
 .title__detail__img {
@@ -140,11 +178,15 @@ a:visited {
 }
 
 .header a {
-  color: #f1faee;
+  color: #DFE0DC;
 }
 
-.title__list a {
+.title__list a, .title__review__text a, .title__review__date a {
   color: black;
+}
+
+.title__detail__button, .title__review__username, .title__review__rank {
+  color: #DFE0DC;
 }
 
 .header {
@@ -179,7 +221,7 @@ a:visited {
 .container {
   max-width: 100rem;
   margin: 4rem auto;
-  background: #f1faee;
+  background: #DFE0DC;
   -webkit-box-shadow: 5px 5px 3px black;
           box-shadow: 5px 5px 3px black;
   border-radius: 1rem;
@@ -218,7 +260,7 @@ a:visited {
 
 .content__layout .main .section {
   width: 100%;
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
 }
 
 .content__layout .main .section__tertiary {
@@ -252,14 +294,87 @@ a:visited {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  margin-bottom: 4rem;
 }
 
-.title__detail__rank__text {
-  margin-bottom: 2rem;
+.title__detail__header {
+  text-align: center;
+}
+
+.title__detail__rank {
+  margin-bottom: 4rem;
+  background: #1d3557;
+  color: #DFE0DC;
+  width: 50%;
+  padding: .2rem 0;
+  text-align: center;
+  border-radius: .3rem;
 }
 
 .title__detail__list {
   list-style: none;
+}
+
+.title__detail__list--item:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.title__detail__button {
+  background: #e63946;
+  border-radius: .5rem;
+  padding: 1rem;
+  display: inline-block;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.title__detail__button:hover {
+  background: #1d3557;
+}
+
+.title__reviews {
+  width: 100%;
+}
+
+.title__review {
+  padding: 2rem;
+  background: white;
+  border-radius: .4rem;
+  -webkit-box-shadow: 1px 2px 3px #1d3557;
+          box-shadow: 1px 2px 3px #1d3557;
+}
+
+.title__review:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.title__review__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title__review__username {
+  background: #1d3557;
+  padding: .5rem 2rem .5rem 1rem;
+  border-radius: .4rem;
+}
+
+.title__review__rank {
+  background: #e63946;
+  padding: .5rem;
+  border-radius: .4rem;
+  -webkit-transform: translateX(-1rem);
+          transform: translateX(-1rem);
+}
+
+.title__review__date {
+  color: #1d3557;
+  margin-top: 1rem;
 }
 
 .welcome {
@@ -329,12 +444,12 @@ a:visited {
   width: 100%;
   height: 100%;
   padding: 0 2rem;
-  background: #f1faee;
+  background: #DFE0DC;
 }
 
 .title__text:hover {
   background: transparent;
-  color: #f1faee;
+  color: #DFE0DC;
 }
 
 .title__text:hover .title__header {
@@ -359,7 +474,7 @@ a:visited {
   right: 0;
   height: 100%;
   width: 100%;
-  background-color: #f1faee;
+  background-color: #DFE0DC;
   -webkit-transition: all .8s;
   transition: all .8s;
 }
@@ -370,7 +485,7 @@ a:visited {
 
 .title__stats__number__hovered {
   opacity: 0;
-  color: #f1faee;
+  color: #DFE0DC;
 }
 
 .title__stats__phase {
@@ -405,7 +520,7 @@ a:visited {
   width: 100%;
   height: 7rem;
   position: relative;
-  border: 1px solid #f1faee;
+  border: 1px solid #DFE0DC;
 }
 
 .title__animation {
@@ -421,8 +536,8 @@ a:visited {
   width: 100%;
   height: 100%;
   border-radius: 6rem;
-  -webkit-filter: brightness(50%);
-          filter: brightness(50%);
+  -webkit-filter: brightness(70%);
+          filter: brightness(70%);
 }
 
 .title__stats {

@@ -14,7 +14,7 @@
 </div>
 
 <section class="section section__primary">
-    <h2 class="section__header">Quick Highlights</h2>
+    <h2 class="section__header">Quick Title Highlights</h2>
     <div class="highlights">
         <div class="highlights__item">
             <a href="{% url 'movie-detail' most_reviews.slug %}">
@@ -22,7 +22,7 @@
                     <img class="title__img" src="{{ most_reviews.image.url }}" alt="{{ most_reviews.title }}">
                 </figure>
             </a>
-            <p class="highlights__text">Most Reviewed Title</p>
+            <p class="highlights__text">Most Reviews</p>
         </div>
         <div class="highlights__item">
             <a href="{% url 'movie-detail' movies.0.slug %}">
@@ -30,7 +30,7 @@
                     <img class="title__img" src="{{ movies.0.image.url }}" alt="{{ movies.0.title }}">
                 </figure>
             </a>
-            <p class="highlights__text">Top Rated Title</p>
+            <p class="highlights__text">Top Rated</p>
         </div>
 
         <div class="highlights__item">
@@ -39,7 +39,7 @@
                     <img class="title__img" src="{{ newest_title.image.url }}" alt="{{ newest_title.title }}">
                 </figure>
             </a>
-            <p class="highlights__text">Latest Title</p>
+            <p class="highlights__text">Newest</p>
         </div>
     </div>
 </section>
