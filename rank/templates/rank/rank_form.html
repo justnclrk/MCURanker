@@ -9,7 +9,7 @@
     <div class="col-12">
         {% if rank.movie %}
         <h3>Update {{ rank.movie.title }}</h3>
-        <div class="movie-poster-container-lg col-sm-12"><img class="movie-poster-lg" src="{{ rank.movie.image.url }}"
+        <div class="movie-poster-container-lg col-sm-12"><img class="movie-poster-lg" src="{{ rank.movie.poster.url }}"
                 alt="{{ rank.movie.title }}">
             <ul class="list-unstyled d-none d-sm-block">
                 <li>{{ rank.movie.overview }}</li>
@@ -19,7 +19,7 @@
         </div>
         {% else %}
         <h3>Rank and Review {{ movie.title }}</h3>
-        <div class="movie-poster-container-lg"><img class="movie-poster-lg" src="{{ movie.image.url }}"
+        <div class="movie-poster-container-lg"><img class="movie-poster-lg" src="{{ movie.poster.url }}"
                 alt="{{ movie.title }}">
             <ul class="list-unstyled d-none d-sm-block">
                 <li>{{ movie.overview }}</li>

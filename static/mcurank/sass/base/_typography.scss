@@ -7,6 +7,11 @@
         font-weight: 400;
         font-family: 'Bowlby One SC', cursive;
     }
+
+    .navigation {
+        text-transform: uppercase;
+        font-weight: 700;
+    }
 }
 
 .messages {
@@ -116,4 +121,17 @@
 
     }
 
+}
+
+.table {
+    color: $secondary-light-1;
+
+    &__header {
+        font-size: 1.5rem;
+        letter-spacing: .1rem;
+    }
+
+    &__content__row {
+        font-size: 1.2rem;
+    }
 }

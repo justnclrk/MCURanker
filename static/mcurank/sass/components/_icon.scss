@@ -1,0 +1,13 @@
+ion-icon {
+    font-size: 1.2rem;
+}
+
+.icon {
+    &__edit {
+        color: yellow;
+    }
+
+    &__trash {
+        color: $primary;
+    }
+}

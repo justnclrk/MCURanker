@@ -1,12 +1,19 @@
 .header {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
     display: flex;
     align-items: center;
-    background: $primary;
+    background: $raisin-black;
     height: 10rem;
-    padding: 2rem;
     box-shadow: 0 2px 5px black;
+    padding: 0 2rem;
 
     .logo {
+
+        &__red {
+            color: $fiery-rose;
+        }
 
         &__box {
             margin-right: 3rem;
@@ -14,17 +21,31 @@
     }
 
     .navigation {
+        height: 100%;
 
         &__list {
             list-style: none;
             display: flex;
+            height: 100%;
 
             &--item {
+                height: 100%;
+                display: flex;
+                transition: all .2s;
 
-                &:not(:last-child) {
-                    margin-right: 2rem;
+                &:hover {
+                    background: $fiery-rose;
                 }
             }
+        }
+
+        &__link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: stretch;
+            height: 100%;
+            width: 100%;
         }
     }
 }

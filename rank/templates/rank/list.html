@@ -1,40 +1,50 @@
 {% extends "mcurank/base.html" %}
 {% block title %} | your ranks{% endblock %}
 {% block content %}
-<div class="row">
-    <div class="col-12">
-        <h3>Your Ranks</h3>
-        <p class="text-center">Ranks you have made so far</p>
-        {% if ranks %}
-        <table class="table table-sm table-bordered table-light table-hover slim-table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Rank</th>
-                    <th>Movie</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for rank in ranks %}
-                <tr>
-                    <td>{% if rank.number == None%}No Rank{% else %}{{ rank.number }}{% endif %}</td>
-                    <td class="text-truncate text-nowrap" style="max-width: 180px;"><a
-                            href="{% url 'movie-detail' rank.movie.slug %}">{{ rank.movie.title }}</a>
-                    </td>
-                    <td class="text-center text-nowrap"><a class="badge badge badge-dark"
-                            href="{% url 'rank-update' rank.slug %}">Update</a> <a class="badge badge badge-danger"
-                            href="{% url 'rank-delete' rank.slug %}">Delete</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div class="text-center">
-            <a href="{% url 'rank-clear-all' request.user.username %}" class="btn btn-danger m-2">Clear
-                Ranks</a>
+<section class="section section__primary">
+    <h2 class="section__header">Your Ranks</h2>
+
+    {% if ranks %}
+
+    <div class="table">
+        <div class="table__header">
+            <div class="table__header__cell">Rank</div>
+            <div class="table__header__cell">Title</div>
+            <div class="table__header__cell">Actions</div>
         </div>
-        {% else %}
-        <p>No Reviews Yet</p>
-        {% endif %}
+        <div class="table__content">
+            {% for rank in ranks %}
+            <div class="table__content__row">
+                <div class="table__content__row__data">
+                    <span>{% if rank.number == None%}No Rank{% else %}{{ rank.number }}{% endif %}</span>
+                </div>
+                <div class="table__content__row__data">
+                    <a class="table__link" href="{% url 'movie-detail' rank.movie.slug %}">{{ rank.movie.title }}</a>
+                </div>
+                <div class="table__content__row__data table__button__container">
+                    <a class="table__link table__button table__edit" href="{% url 'rank-update' rank.slug %}">
+                        <ion-icon class="icon__edit" name="create"></ion-icon>
+                    </a>
+                    <a class="table__link table__button table__trash" href="{% url 'rank-delete' rank.slug %}">
+                        <ion-icon class="icon__trash" name="trash"></ion-icon>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
+
+    {% else %}
+
+    <div>
+        <p>No Reviews Yet</p>
+    </div>
+
+    {% endif %}
+
+    <div>
+        <a href="{% url 'rank-clear-all' request.user.username %}">Clear Ranks</a>
+    </div>
+
+</section>
 {% endblock content %}

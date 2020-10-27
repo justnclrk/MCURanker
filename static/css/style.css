@@ -119,6 +119,10 @@ body {
   letter-spacing: 0.1rem;
 }
 
+ion-icon {
+  color: blue;
+}
+
 .title__img__container {
   width: 15rem;
   margin-bottom: 1rem;
@@ -184,12 +188,7 @@ a:visited {
 }
 
 .container {
-  max-width: 120rem;
-  margin: 4rem auto;
   background: #DFE0DC;
-  box-shadow: 5px 5px 3px black;
-  border-radius: 1rem;
-  overflow: hidden;
 }
 
 .messages {

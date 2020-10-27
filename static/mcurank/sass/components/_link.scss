@@ -21,3 +21,8 @@ a:visited {
 .title__detail__button, .title__review__username, .title__review__rank {
     color: $secondary-light-1;
 }
+
+.table__link:link,
+.table__link:visited {
+    color: $secondary-light-1;
+}

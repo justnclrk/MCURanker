@@ -11,35 +11,44 @@
         href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Open+Sans:wght@300;400;600;700;800&display=swap"
         rel="stylesheet">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'mcurank/sass/css/style.css' %}">
-    <link rel="icon" type="image/svg+xml" href="{% static 'mcurank/img/favicon.svg' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'mcurank/favicon_io/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'mcurank/favicon_io/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'mcurank/favicon_io/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'mcurank/favicon_io/site.webmanifest' %}">
+    <link rel="stylesheet" href="{% static 'mcurank/css/style.css' %}">
     <title>mcurank {% block title %}{{ subtitle }}{% endblock %}</title>
 </head>
 
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 class="logo__box">
-                <a class="logo" href="{% url 'movie-list'  %}">
-                    <span class="logo__red">mcu</span><span class="logo__white">rank</span>
-                </a>
-            </h1>
-            <nav class="navigation">
-                <ul class="navigation__list">
-                    {% if user.is_authenticated %}
-                    <li class="navigation__list--item"><a href="{% url 'movie-list'  %}">home</a></li>
-                    <li class="navigation__list--item"><a href="{% url 'rank-list'  %}">your ranks</a></li>
-                    <li class="navigation__list--item"><a href="{% url 'profile' %}">update profile</a></li>
-                    <li class="navigation__list--item"><a href="{% url 'logout' %}">logout</a></li>
-                    {% else %}
-                    <li class="navigation__list--item"><a href="{% url 'movie-list'  %}">home</a></li>
-                    <li class="navigation__list--item"><a href="{% url 'login' %}">login</a></li>
-                    <li class="navigation__list--item"><a href="{% url 'register' %}">register</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </header>
 
+    <header class="header">
+        <h1 class="logo__box">
+            <a class="logo" href="{% url 'movie-list'  %}">
+                <span class="logo__red">mcu</span><span class="logo__white">rank</span>
+            </a>
+        </h1>
+        <nav class="navigation">
+            <ul class="navigation__list">
+                {% if user.is_authenticated %}
+                <li class="navigation__list--item"><a class="navigation__link" href="{% url 'movie-list'  %}">home</a>
+                </li>
+                <li class="navigation__list--item"><a class="navigation__link" href="{% url 'rank-list'  %}">ranks</a>
+                </li>
+                <li class="navigation__list--item"><a class="navigation__link" href="{% url 'profile' %}">profile</a>
+                </li>
+                <li class="navigation__list--item"><a class="navigation__link" href="{% url 'logout' %}">logout</a></li>
+                {% else %}
+                <li class="navigation__list--item"><a class="navigation__link" href="{% url 'movie-list'  %}">home</a>
+                </li>
+                <li class="navigation__list--item"><a class="navigation__link" href="{% url 'login' %}">login</a></li>
+                <li class="navigation__list--item"><a class="navigation__link" href="{% url 'register' %}">register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
         <!-- messages -->
         <div class="messages">
             {% if messages %}
@@ -50,28 +59,19 @@
         </div>
         <!-- messages -->
 
-        <div class="content__layout">
+        <main class="main">
+            {% block content %}
+            {% endblock %}
+        </main>
 
-            <div class="gutter">
-            </div>
-
-            <main class="main">
-                {% block content %}
-                {% endblock %}
-            </main>
-
-            <div class="gutter">
-            </div>
-
-        </div>
 
 
         <footer class="footer">
             <p>This is a personal project, mcurank has no affiliation with Marvel Studios or Disney.</p>
         </footer>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{% static 'mcurank/main.js' %}"></script>
+
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 </body>
 
 </html>
