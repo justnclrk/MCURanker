@@ -4,7 +4,7 @@ from PIL import Image
 
 class Movie(models.Model):
     poster = models.ImageField(default='default-movie.png', upload_to='movie_posters')
-    teaser = models.ImageField(default='default-movie.png', upload_to='movie_teasers')
+    teaser = models.ImageField(default='teaser-default.gif', upload_to='movie_teasers')
     title = models.CharField(max_length=60, unique=True)
     overview = models.TextField()
     phase = models.IntegerField()

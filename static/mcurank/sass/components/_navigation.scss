@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     background: $raisin-black;
-    height: 10rem;
+    height: 5rem;
     box-shadow: 0 2px 5px black;
     padding: 0 2rem;
 
@@ -30,6 +30,7 @@
 
             &--item {
                 height: 100%;
+                padding: 0 1rem;
                 display: flex;
                 transition: all .2s;
 

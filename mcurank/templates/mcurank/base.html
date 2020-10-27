@@ -30,8 +30,6 @@
         <nav class="navigation">
             <ul class="navigation__list">
                 {% if user.is_authenticated %}
-                <li class="navigation__list--item"><a class="navigation__link" href="{% url 'movie-list'  %}">home</a>
-                </li>
                 <li class="navigation__list--item"><a class="navigation__link" href="{% url 'rank-list'  %}">ranks</a>
                 </li>
                 <li class="navigation__list--item"><a class="navigation__link" href="{% url 'profile' %}">profile</a>
