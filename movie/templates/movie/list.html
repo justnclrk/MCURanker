@@ -1,43 +1,5 @@
 {% extends "mcurank/base.html" %}
 {% block content %}
-<div class="welcome">
-    {% if user.is_authenticated %}
-    <p class="message__text">Welcome back!</p>
-    <p class="message__text">Click a title to create or update your rank and review!</p>
-    {% else %}
-    <p class="message__text">Welcome to MCU Rank!</p>
-    <p class="message__text">
-    <p>This is a ranking application built for the Marvel Cinematic Universe.</p>
-    <p>Login or Register above to rank and review your favorite titles!</p>
-    </p>
-    {% endif %}
-</div>
-
-<section class="section section__primary">
-    <h2 class="section__header">Quick Title Highlights</h2>
-    <div class="highlights">
-        <div class="highlights__item">
-            <h3 class="highlights__description">Most Reviewed</h3>
-
-            <a href="{% url 'movie-detail' most_reviews.slug %}">
-                <p>💬 {{ most_reviews.title }}</p>
-            </a>
-        </div>
-        <div class="highlights__item">
-            <h3 class="highlights__description">Top Ranked</h3>
-            <a href="{% url 'movie-detail' movies.0.slug %}">
-                <p>{{ movies.0.title }}</p>
-            </a>
-        </div>
-
-        <div class="highlights__item">
-            <h3 class="highlights__description">Newest</h3>
-            <a href="{% url 'movie-detail' newest_title.slug %}">
-                <p>{{ newest_title.title }}</p>
-            </a>
-        </div>
-    </div>
-</section>
 
 <section class="section section__secondary">
     <h2 class="section__header">Community Ranks</h2>

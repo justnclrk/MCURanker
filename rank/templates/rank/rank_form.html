@@ -4,57 +4,60 @@
 {% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-<!-- Header And Movie -->
-<div class="row">
-    <div class="col-12">
-        {% if rank.movie %}
-        <h3>Update {{ rank.movie.title }}</h3>
-        <div class="movie-poster-container-lg col-sm-12"><img class="movie-poster-lg" src="{{ rank.movie.poster.url }}"
-                alt="{{ rank.movie.title }}">
-            <ul class="list-unstyled d-none d-sm-block">
-                <li>{{ rank.movie.overview }}</li>
-                <li>Release Year: {{ rank.movie.release_date }}</li>
-                <li>Phase: {{ rank.movie.phase }}</li>
-            </ul>
+<section class="section section__tertiary">
+    {% if rank.movie %}
+    <h3 class="title__detail__header">Update {{ rank.movie.title }}</h3>
+    <div class="title__detail">
+        <div>
+            <figure class="title__detail__img__container">
+                <img class="title__detail__img" src="{{ rank.movie.poster.url }}" alt="{{ rank.movie.title }}">
+            </figure>
         </div>
-        {% else %}
-        <h3>Rank and Review {{ movie.title }}</h3>
-        <div class="movie-poster-container-lg"><img class="movie-poster-lg" src="{{ movie.poster.url }}"
-                alt="{{ movie.title }}">
-            <ul class="list-unstyled d-none d-sm-block">
-                <li>{{ movie.overview }}</li>
-                <li class="italic">Release Year: {{ movie.release_date }}</li>
-                <li class="italic">Phase: {{ movie.phase }}</li>
-            </ul>
+        <ul class="title__detail__list">
+            <li class="title__detail__list--item">{{ rank.movie.overview }}</li>
+            <li class="title__detail__list--item">Released: {{ rank.movie.release_date }}</li>
+            <li class="title__detail__list--item">Phase: {{ rank.movie.phase }}</li>
+            <li class="title__detail__list--item">
+                <a class="title__detail__button" href="{% url 'rank-update' rank.movie.slug %}">Update Your Rank</a>
+            </li>
+        </ul>
+    </div>
+    {% else %}
+    <h3 class="title__detail__header">Rank and Review {{ movie.title }}</h3>
+    <div class="title__detail">
+        <div>
+            <figure class="title__detail__img__container">
+                <img class="title__detail__img" src="{{ movie.poster.url }}" alt="{{ movie.title }}">
+            </figure>
         </div>
-        {% endif %}
+        <ul class="title__detail__list">
+            <li class="title__detail__list--item">{{ movie.overview }}</li>
+            <li class="title__detail__list--item">Released: {{ movie.release_date }}</li>
+            <li class="title__detail__list--item">Phase: {{ movie.phase }}</li>
+            <li class="title__detail__list--item">
+                <a class="title__detail__button" href="{% url 'rank-create' movie.slug %}">Rank This Movie!</a>
+            </li>
+        </ul>
     </div>
-</div>
-<!-- End Header and Movie -->
-<div class="row">
-    <div class="col-12">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-danger btn-lrg" type="submit">Submit</button>
-                <div class="dropdown">
-                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Your Other Reviews
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        {% for rank in ranked_movies %}
-                        <a class="dropdown-item" href="{% url 'movie-detail' rank.movie.slug %}">{{ rank.number }}
-                            -
-                            {{ rank.movie.title}}</a>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            {{ form|crispy }}
+        </fieldset>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <section class="section">
+        <h3 class="section__header">Your Other Reviews</h3>
+        <ul class="section__list">
+            {% for rank in ranked_movies %}
+            <li class="section__list__item"><a class="section__list__item--link"
+                    href="{% url 'movie-detail' rank.movie.slug %}">{{ rank.number }} -
+                    {{ rank.movie.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+</section>
 {% endblock content %}

@@ -1,44 +1,11 @@
-.welcome {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-.highlights {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    text-align: center;
-    background: $lavender-blush;
-
-    &__item {
-        width: 100%;
-        height: 100%;
-    }
-
-    &__description {
-        color: $lavender-blush;
-        background: $raisin-black;
-        padding: 1rem;
-    }
-}
-
-.section {
-    &__header {
-        margin-bottom: 1rem;
-    }
-}
-
 .title {
     &__list {
         display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
     &__container {
         position: relative;
-        width: 40rem;
-        height: 10rem;
+        width: 100%;
         border: 5px dotted $raisin-black;
         margin-bottom: 2rem;
         color: $raisin-black;
@@ -69,7 +36,7 @@
             z-index: -2;
             width: 100%;
             height: 100%;
-            filter: brightness(60%);
+            object-fit: cover;
         }
     }
 
@@ -103,9 +70,7 @@
         z-index: 2;
         left: 0;
         top: 0;
-        transform: translate(-2rem, 1rem);
         background-color: $fiery-rose;
-        border-radius: .4rem;
         width: 4rem;
         display: flex;
         justify-content: center;

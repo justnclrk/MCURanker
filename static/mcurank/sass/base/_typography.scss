@@ -18,31 +18,12 @@
     font-size: 1.7rem;
 }
 
-.welcome {
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: .1rem;
-
-    .message__text:not(:last-child) {
-        font-weight: 600;
-        font-size: 3rem;
-        text-transform: uppercase;
-    }
-}
-
 .section {
     &__header {
         text-transform: uppercase;
         letter-spacing: .1rem;
         font-size: 2rem;
     }
-}
-
-.highlights {
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
 }
 
 .title {
@@ -56,7 +37,6 @@
 
     &__stat {
         text-transform: uppercase;
-        font-size: 2.5rem;
         font-weight: 800;
     }
 
